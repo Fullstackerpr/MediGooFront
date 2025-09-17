@@ -1,191 +1,244 @@
 import { memo } from "react";
-
-import back from "../../shared/doctor/back.svg";
-import user from "../../shared/doctor/userImg.png";
-import tick from "../../shared/doctor/tick.svg";
-import like from "../../shared/doctor/like.svg";
-import verify from "../../shared/doctor/verify.svg";
-import group from "../../shared/doctor/group.svg";
-import bed from "../../shared/doctor/bed.svg";
-import img from "../../shared/doctor/img.svg";
-import eye from "../../shared/doctor/eye.svg";
-import delet from "../../shared/doctor/delete.svg";
-import { Star } from "lucide-react";
+import user from "../../shared/assets/doctor/userImg.png";
+import clock from "../../shared/assets/doctor/clock.svg";
+import text from "../../shared/assets/doctor/text.svg";
+import calen from "../../shared/assets/doctor/calendar.svg";
+import stethscope from "../../shared/assets/doctor/stethoscope.svg";
+import { Filter, Search } from "lucide-react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const Doctor = () => {
-  return (
-    <div>
-      <div className="flex gap-[10px] text-[#1067FF] text-[18px] font-medium">
-        <img src={back} alt="" />
-        <p>
-          Shifokorlar / <span>Morshed Ali</span>
-        </p>
-      </div>
-      <div className="mt-[40px] flex gap-[58px]">
-        <div>
-          <div className="flex flex-col items-center w-[400px] rounded-[10px] shadow-lg">
-            <div className="mt-[28px]">
-              <img
-                src={user}
-                alt=""
-                className="w-[106px] h-[106px] rounded-[50%] shadow-md relative"
-              />
-              <img src={tick} alt="" className="absolute top-49 left-153" />
-            </div>
-            <div className="mt-[8px] flex flex-col items-center">
-              <h3 className="pb-[8px] text-[18px] font-semibold">
-                Mr.<span>Doctor Name</span>
-              </h3>
-              <span className="text-[#00DD00]">Active</span>
-              <div className="flex items-center justify-center px-[12px] py-[4px] gap-[7px] bg-[#F2F3FD] rounded-[4px] mt-[8px]">
-                <Star size={16} color="#F59E0B" />
-                <strong className="text-[14px]">4.7</strong>
-              </div>
-              <div className="flex items-center gap-[9px] mt-[16px]">
-                <img src={like} alt="" />
-                <p className="text-[#344054] text-[15px] font-medium">
-                  98% <span>(250 sharxlar)</span>
-                </p>
-              </div>
-              <div className="flex items-center gap-[9px] mt-[8px]">
-                <img src={verify} alt="" />
-                <p className="text-[#344054] text-[15px] font-medium">
-                  Medical Registration Verified
-                </p>
-              </div>
-            </div>
-            <div className="h-px w-[312px] bg-gray-200 mt-[28px]" />
+  const navigate = useNavigate();
 
-            <div className="flex gap-[30px] mt-[18px]">
-              <div>
-                <div>
-                  <span className="text-[#667085] text-[16px] font-normal">
-                    Email
-                  </span>
-                  <p className="text-[17px] font-medium">jubed435@gmail.com</p>
-                </div>
-                <div className="mt-[16px]">
-                  <span className="text-[#667085] text-[16px] font-normal">
-                    Yoshi
-                  </span>
-                  <p className="text-[17px] font-medium">39</p>
-                </div>
-              </div>
-              <div>
-                <span className="text-[#667085] text-[16px] font-normal">
-                  Telefon raqami
-                </span>
-                <p className="text-[17px] font-medium">91 555-0127</p>
-              </div>
+  const { pathname } = useLocation();
+
+  if (pathname.startsWith("/doctor-detail")) {
+    return <Outlet />;
+  }
+
+  return (
+    <div className="pr-8">
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-[24px] font-semibold">Shifokorlar</h1>
+          <p className="text-[16px] font-normal text-[#344054]">
+            Showing: All Consultations of All Healthcare Providers
+          </p>
+        </div>
+        <div className="flex gap-4">
+          <div className="flex items-center px-3 h-[40px] border-2 border-[#eaecf0] rounded-lg">
+            <input
+              type="text"
+              name="search"
+              placeholder="Qidirish..."
+              className="outline-0"
+            />
+            <Search size={20} />
+          </div>
+
+          <button className="flex gap-2 items-center px-3 h-[40px] border-2 border-[#eaecf0] rounded-lg">
+            Filtr <Filter size={18} />
+          </button>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between mb-[12px] p-[20px] mt-[28px] border-t-2 border-[#EAECF0] rounded-[10px] shadow-md">
+        <div className="flex items-center gap-[20px]">
+          <div>
+            <img src={user} alt="Doctor" className="w-[80px] rounded-[4px]" />
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-[20px] pb-[4px]">
+              Dr. Ratul Ahamed
+            </h4>
+
+            <div className="flex flex-wrap gap-6 text-[16px] text-[#475467] font-medium pb-[12px]">
+              <span className="flex items-center gap-2">
+                <img src={stethscope} alt="spec" className="w-5 h-5" />
+                Heart Specialist
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={clock} alt="time" className="w-5 h-5" />
+                9:30am - 01:00am BST
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={calen} alt="date" className="w-5 h-5" />
+                Jun 24, 2021
+              </span>
             </div>
-            <div className="my-[28px]">
-              <p className="text-[17px] text-[#1067FF] font-medium underline">
-                Share your Feedback.
+
+            <div className="flex items-start gap-2 text-[14px] text-[#667085] font-normal">
+              <img src={text} alt="desc" className="w-5 h-5 mt-1" />
+              <p>
+                Infectious Diseases Hub aims to provide up-to-date, essential
+                research and on <br /> aspects of microbiology, virology, and
+                parasitology.
               </p>
             </div>
           </div>
         </div>
 
-        <div>
-          <div className="flex gap-15">
-            <div className="flex flex-col items-center py-[20px] bg-[#f2f3fd] border border-[#ccd0f8] rounded-[8px] w-[439px]">
-              <img src={group} alt="" className="mb-[12px]" />
-              <strong className="font-semibold text-[24px]">165</strong>
-              <p className="text-[#121212] text-[12px] font-medium">
-                Qabullar soni
-              </p>
-            </div>
+        <div className="flex flex-col">
+          <button className="bg-[#1067FF] text-white text-[18px] font-semibold rounded-xl px-5 py-3 mb-[8px] cursor-pointer">
+            View Appointments
+          </button>
+          <button
+            onClick={() => navigate("/doctor-detail")}
+            className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
+          >
+            Batafsil
+          </button>
+        </div>
+      </div>
 
-            <div className="flex flex-col items-center py-[20px] bg-[#f2f3fd] border border-[#ccd0f8] rounded-[8px] w-[439px]">
-              <img src={bed} alt="" className="mb-[12px]" />
-              <strong className="font-semibold text-[24px]">
-                54,145,841.00 UZS
-              </strong>
-              <p className="text-[#121212] text-[12px] font-medium">
-                Umumiy daromadi
-              </p>
-            </div>
+      <div className="flex items-center justify-between mb-[12px] p-[20px] mt-[28px] border-t-2 border-[#EAECF0] rounded-[10px] shadow-md">
+        <div className="flex items-center gap-[20px]">
+          <div>
+            <img src={user} alt="Doctor" className="w-[80px] rounded-[4px]" />
           </div>
 
           <div>
-            <div className="mt-[24px]">
-              <h3>Mutaxassisligi</h3>
-              <div className="flex gap-[9px] mt-[18px]">
-                <p className="border border-[#EAECF0] rounded-[30px] px-4 py-2">
-                  Dentist
-                </p>
-                <p className="border border-[#EAECF0] rounded-[30px] px-4 py-2">
-                  LOR
-                </p>
-              </div>
-              <div className="h-px bg-gray-200 mt-[28px]" />
+            <h4 className="font-semibold text-[20px] pb-[4px]">
+              Dr. Ratul Ahamed
+            </h4>
+
+            <div className="flex flex-wrap gap-6 text-[16px] text-[#475467] font-medium pb-[12px]">
+              <span className="flex items-center gap-2">
+                <img src={stethscope} alt="spec" className="w-5 h-5" />
+                Heart Specialist
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={clock} alt="time" className="w-5 h-5" />
+                9:30am - 01:00am BST
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={calen} alt="date" className="w-5 h-5" />
+                Jun 24, 2021
+              </span>
             </div>
 
-            <div>
-              <h3>Hujjatlar</h3>
-              <div className="mt-[18px]">
-                <div className="mb-[18px]">
-                  <p className="font-medium text-[14px] text-[#62626E]">
-                    Passport fotosutati (oldi va orqasi)
-                  </p>
-                  <div className="flex gap-[9px] mt-[8px]">
-                    <img src={img} alt="" />
-                    <p>PASSPORTIM2FAF-SD42-DADW-...</p>
-                    <img src={eye} alt="" />
-                    <img src={delet} alt="" />
-                  </div>
-                </div>
-
-                <div className="mb-[18px]">
-                  <p className="font-medium text-[14px] text-[#62626E]">
-                    Diplom (Bakalavr va mutaxassislik)
-                  </p>
-                  <div className="flex gap-[9px] mt-[8px]">
-                    <img src={img} alt="" />
-                    <p>PASSPORTIM2FAF-SD42-DADW-...</p>
-                    <img src={eye} alt="" />
-                    <img src={delet} alt="" />
-                  </div>
-                </div>
-
-                <div className="mb-[18px]">
-                  <p className="font-medium text-[14px] text-[#62626E]">
-                    O‘z-o‘zini band qilish
-                  </p>
-                  <div className="flex gap-[9px] mt-[8px]">
-                    <img src={img} alt="" />
-                    <p>PASSPORTIM2FAF-SD42-DADW-...</p>
-                    <img src={eye} alt="" />
-                    <img src={delet} alt="" />
-                  </div>
-                </div>
-
-                <div className="mb-[18px]">
-                  <p className="font-medium text-[14px] text-[#62626E]">
-                    Sertifikat
-                  </p>
-                  <div className="flex gap-[9px] mt-[8px]">
-                    <img src={img} alt="" />
-                    <p>PASSPORTIM2FAF-SD42-DADW-...</p>
-                    <img src={eye} alt="" />
-                    <img src={delet} alt="" />
-                  </div>
-                </div>
-
-                <div className="mb-[18px]">
-                  <p className="font-medium text-[14px] text-[#62626E]">
-                    Shaxsiy tibbiy varaqa
-                  </p>
-                  <div className="flex gap-[9px] mt-[8px]">
-                    <img src={img} alt="" />
-                    <p>PASSPORTIM2FAF-SD42-DADW-...</p>
-                    <img src={eye} alt="" />
-                    <img src={delet} alt="" />
-                  </div>
-                </div>
-              </div>
+            <div className="flex items-start gap-2 text-[14px] text-[#667085] font-normal">
+              <img src={text} alt="desc" className="w-5 h-5 mt-1" />
+              <p>
+                Infectious Diseases Hub aims to provide up-to-date, essential
+                research and on <br /> aspects of microbiology, virology, and
+                parasitology.
+              </p>
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col">
+          <button className="bg-[#1067FF] text-white text-[18px] font-semibold rounded-xl px-5 py-3 mb-[8px] cursor-pointer">
+            View Appointments
+          </button>
+          <button
+            onClick={() => navigate("/doctor-detail")}
+            className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
+          >
+            Batafsil
+          </button>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between mb-[12px] p-[20px] mt-[28px] border-t-2 border-[#EAECF0] rounded-[10px] shadow-md">
+        <div className="flex items-center gap-[20px]">
+          <div>
+            <img src={user} alt="Doctor" className="w-[80px] rounded-[4px]" />
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-[20px] pb-[4px]">
+              Dr. Ratul Ahamed
+            </h4>
+
+            <div className="flex flex-wrap gap-6 text-[16px] text-[#475467] font-medium pb-[12px]">
+              <span className="flex items-center gap-2">
+                <img src={stethscope} alt="spec" className="w-5 h-5" />
+                Heart Specialist
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={clock} alt="time" className="w-5 h-5" />
+                9:30am - 01:00am BST
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={calen} alt="date" className="w-5 h-5" />
+                Jun 24, 2021
+              </span>
+            </div>
+
+            <div className="flex items-start gap-2 text-[14px] text-[#667085] font-normal">
+              <img src={text} alt="desc" className="w-5 h-5 mt-1" />
+              <p>
+                Infectious Diseases Hub aims to provide up-to-date, essential
+                research and on <br /> aspects of microbiology, virology, and
+                parasitology.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          <button className="bg-[#1067FF] text-white text-[18px] font-semibold rounded-xl px-5 py-3 mb-[8px] cursor-pointer">
+            View Appointments
+          </button>
+          <button
+            onClick={() => navigate("/doctor-detail")}
+            className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
+          >
+            Batafsil
+          </button>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between mb-[12px] p-[20px] mt-[28px] border-t-2 border-[#EAECF0] rounded-[10px] shadow-md">
+        <div className="flex items-center gap-[20px]">
+          <div>
+            <img src={user} alt="Doctor" className="w-[80px] rounded-[4px]" />
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-[20px] pb-[4px]">
+              Dr. Ratul Ahamed
+            </h4>
+
+            <div className="flex flex-wrap gap-6 text-[16px] text-[#475467] font-medium pb-[12px]">
+              <span className="flex items-center gap-2">
+                <img src={stethscope} alt="spec" className="w-5 h-5" />
+                Heart Specialist
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={clock} alt="time" className="w-5 h-5" />
+                9:30am - 01:00am BST
+              </span>
+              <span className="flex items-center gap-2">
+                <img src={calen} alt="date" className="w-5 h-5" />
+                Jun 24, 2021
+              </span>
+            </div>
+
+            <div className="flex items-start gap-2 text-[14px] text-[#667085] font-normal">
+              <img src={text} alt="desc" className="w-5 h-5 mt-1" />
+              <p>
+                Infectious Diseases Hub aims to provide up-to-date, essential
+                research and on <br /> aspects of microbiology, virology, and
+                parasitology.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          <button className="bg-[#1067FF] text-white text-[18px] font-semibold rounded-xl px-5 py-3 mb-[8px] cursor-pointer">
+            View Appointments
+          </button>
+          <button
+            onClick={() => navigate("/doctor-detail")}
+            className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
+          >
+            Batafsil
+          </button>
         </div>
       </div>
     </div>

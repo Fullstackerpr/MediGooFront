@@ -3,8 +3,8 @@ import { Search, ArrowLeft, ArrowRight, X } from "lucide-react";
 import { memo, useState } from "react";
 import Popup from "../../shared/ui/Popup";
 
-import img from "../../shared/doctor/img.svg";
-import eye from "../../shared/doctor/eye.svg";
+import img from "../../shared/assets/doctor/img.svg";
+import eye from "../../shared/assets/doctor/eye.svg";
 
 const Potiton = () => {
   const [show, setShow] = useState(false);
@@ -18,7 +18,7 @@ const Potiton = () => {
             Showing: All Consultations of All Healthcare Providers
           </p>
         </div>
-        <div className="flex items-center px-3 h-[40px] border-2 border-[#eaecf0] rounded-xl">
+        <div className="flex items-center px-3 h-[40px] border-2 border-[#eaecf0] rounded-lg">
           <input
             type="text"
             name="search"
@@ -376,6 +376,12 @@ const Potiton = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="flex justify-end gap-4 mt-[40px]">
+            <button onClick={() => setShow(false)} className="border-0 bg-white text-[#070B5C] font-semibold text-[18px] cursor-pointer">Orga</button>
+            <button className="bg-[#D93D56] text-white text-[18px] font-semibold rounded-lg px-4 py-2 cursor-pointer">Arizani bekor qilish</button>
+            <button className="bg-[#0E1680] text-white font-semibold text-[18px] rounded-lg px-4 py-2 cursor-pointer">Tasdiqlash</button>
           </div>
         </div>
       </Popup>

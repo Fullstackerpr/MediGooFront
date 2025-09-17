@@ -9,6 +9,7 @@ const Patient = lazy(() => import("../pages/patient"));
 const Admin = lazy(() => import("../pages/admin"));
 const Sett = lazy(() => import("../pages/setting"));
 const Exit = lazy(() => import("../pages/exit"));
+const DoctorDetail = lazy(() => import("../pages/doctor/pages/doctorDetail"))
 
 const AppRouter = () => {
   return useRoutes([
@@ -18,6 +19,7 @@ const AppRouter = () => {
       children: [
         { index: true, element: <Dashboard /> },
         { path: "doctor", element: <Doctor /> },
+        { path: "doctor-detail", element: <DoctorDetail /> },
         { path: "potition", element: <Potition /> },
         { path: "patient", element: <Patient /> },
         { path: "admin", element: <Admin /> },
