@@ -12,7 +12,7 @@ const Doctor = () => {
 
   const { pathname } = useLocation();
 
-  if (pathname.startsWith("/doctor-detail")) {
+  if (pathname.startsWith("/doctor/doctor-detail")) {
     return <Outlet />;
   }
 
@@ -42,6 +42,7 @@ const Doctor = () => {
         </div>
       </div>
 
+
       <div className="flex items-center justify-between mb-[12px] p-[20px] mt-[28px] border-t-2 border-[#EAECF0] rounded-[10px] shadow-md">
         <div className="flex items-center gap-[20px]">
           <div>
@@ -84,7 +85,7 @@ const Doctor = () => {
             View Appointments
           </button>
           <button
-            onClick={() => navigate("/doctor-detail")}
+            onClick={() => navigate("/doctor/doctor-detail")}
             className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
           >
             Batafsil
@@ -134,7 +135,7 @@ const Doctor = () => {
             View Appointments
           </button>
           <button
-            onClick={() => navigate("/doctor-detail")}
+            onClick={() => navigate("/doctor/doctor-detail")}
             className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
           >
             Batafsil
@@ -184,7 +185,7 @@ const Doctor = () => {
             View Appointments
           </button>
           <button
-            onClick={() => navigate("/doctor-detail")}
+            onClick={() => navigate("/doctor/doctor-detail")}
             className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
           >
             Batafsil
@@ -234,7 +235,7 @@ const Doctor = () => {
             View Appointments
           </button>
           <button
-            onClick={() => navigate("/doctor-detail")}
+            onClick={() => navigate("/doctor/doctor-detail")}
             className="border border-[#D0D5DD] text-[18px] font-semibold text-[#344054] rounded-xl py-3 cursor-pointer"
           >
             Batafsil

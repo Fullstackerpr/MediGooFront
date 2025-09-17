@@ -34,7 +34,7 @@ const DoctorDetail = () => {
                 alt=""
                 className="w-[106px] h-[106px] rounded-[50%] shadow-md relative"
               />
-              <img src={tick} alt="" className="absolute top-49 left-153" />
+              <img src={tick} alt="" className="absolute top-65 left-153" />
             </div>
             <div className="mt-[8px] flex flex-col items-center">
               <h3 className="pb-[8px] text-[18px] font-semibold">
