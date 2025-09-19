@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  type ChartType,
 } from "chart.js";
 import { Chart, Doughnut } from "react-chartjs-2";
 import type { ChartData } from "chart.js";
@@ -41,7 +42,7 @@ const trafficLabels = [
   "Jan 12",
 ];
 
-const trafficData: ChartData<"bar" | "line", number[], string> = {
+const trafficData: ChartData<ChartType, number[], string> = {
   labels: trafficLabels,
   datasets: [
     {
@@ -53,6 +54,7 @@ const trafficData: ChartData<"bar" | "line", number[], string> = {
     {
       type: "line",
       label: "Social Media",
+      data: [20, 40, 30, 45, 35, 25, 30, 50, 40, 35, 25, 15],
       borderColor: "rgba(75,192,192,1)",
       backgroundColor: "rgba(75,192,192,0.3)",
       tension: 0.3,
@@ -110,29 +112,6 @@ const Dashboard = () => {
           </div>
           <p className="mt-4 text-xl font-bold">75%</p>
           <p className="text-sm text-gray-500">Spending Target: 32%</p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-xl bg-white p-4 shadow">
-          <p className="text-sm text-gray-500">Income</p>
-          <h2 className="text-xl font-bold">$5,456</h2>
-          <p className="text-green-500">+14%</p>
-        </div>
-        <div className="rounded-xl bg-white p-4 shadow">
-          <p className="text-sm text-gray-500">Expenses</p>
-          <h2 className="text-xl font-bold">$4,764</h2>
-          <p className="text-red-500">-8%</p>
-        </div>
-        <div className="rounded-xl bg-white p-4 shadow">
-          <p className="text-sm text-gray-500">Spendings</p>
-          <h2 className="text-xl font-bold">$1.5M</h2>
-          <p className="text-green-500">+15%</p>
-        </div>
-        <div className="rounded-xl bg-white p-4 shadow">
-          <p className="text-sm text-gray-500">Totals</p>
-          <h2 className="text-xl font-bold">$31,564</h2>
-          <p className="text-yellow-600">+76%</p>
         </div>
       </div>
     </div>
