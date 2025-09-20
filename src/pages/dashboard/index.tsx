@@ -81,9 +81,6 @@ const Dashboard = () => {
   const options: ChartOptions<"bar"> = {
     responsive: true,
     plugins: {
-      legend: {
-        position: "top",
-      },
       datalabels: {
         anchor: "end",
         align: "end",
@@ -93,9 +90,27 @@ const Dashboard = () => {
           const percent = ((value / stateTotal) * 100).toFixed(1) + "%";
           return percent;
         },
-        color: "#111",
+        color: "#000000",
         font: {
-          weight: "bold",
+          size: 13,
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "#000",
+          font: {
+            size: 14,
+          },
+        },
+      },
+      y: {
+        ticks: {
+          color: "#111",
+          font: {
+            size: 14,
+          },
         },
       },
     },
